@@ -5,21 +5,26 @@ de la compra, y una de las funciones anteriores, y utilice la función pasada pa
 los descuentos o el IVA a los productos de la cesta y devolver el precio final de la cesta."""
 
 def descuento(precio,descuento):
-    return precio * descuento
+    return precio-(precio * descuento)
 
 def aplicar_iva(producto,iva):
     return producto + (producto * iva/100)
 
-def compras(productos):
+def compras(productos,funcion_aplicar):
     total_compra=0
-    for producto in productos:
-        descuento_producto=descuento(productos[producto]["precio"],productos[producto]["descuento"])
-        producto_con_iva=aplicar_iva(productos[producto]["precio"],20) 
+        
+    for nombre,datos in productos.items():
+    
+        producto_precio=datos["precio"]
+        producto_descuento=datos["descuento"]
+
+    
+        precio_descuento=descuento(producto_precio,producto_descuento)
+        precio_final=funcion_aplicar(precio_descuento,20)
                                      
-        total_compra+= (producto_con_iva - descuento_producto)
-        print(f"{producto} : {producto_con_iva} ")
-        print(f"descuento : - {descuento_producto}")
-     
+        total_compra+= precio_final
+        print(f"{nombre} : {precio_final} ")
+      
          
     print(f"el total de la compra es de:{total_compra}")
 
@@ -56,4 +61,4 @@ productos = {
     }
 }
 
-compras(productos)
+compras(productos,aplicar_iva)
