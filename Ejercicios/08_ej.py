@@ -1,5 +1,13 @@
 """
-Escribir una función reciba un diccionario con las asignaturas y las notas de un alumno
- y devuelva otro diccionario con las asignaturas en mayúsculas y las calificaciones 
- correspondientes a las notas aprobadas.
+Encontrar la suma de todos los números impares entre 1 y 50
 """
+
+def suma_impares():
+    suma_impar=0
+    for num in range(0,50):
+        if num % 2 != 0:
+            suma_impar+=num
+
+    return suma_impar
+
+print(suma_impares())

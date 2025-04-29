@@ -1,7 +1,34 @@
-"""Una inmobiliaria de una ciudad maneja una lista de inmuebles como la siguiente:"""
+"""Tienes una lista de diccionarios, donde cada uno representa un producto con su nombre, 
+categoría y puntuación de reseñas. Tu tarea es encontrar el producto 
+con la mayor puntuación en cada categoría."""
 
-[{'año': 2000, 'metros': 100, 'habitaciones': 3, 'garaje': True, 'zona': 'A'},
-{'año': 2012, 'metros': 60, 'habitaciones': 2, 'garaje': True, 'zona': 'B'},
-{'año': 1980, 'metros': 120, 'habitaciones': 4, 'garaje': False, 'zona': 'A'},
-{'año': 2005, 'metros': 75, 'habitaciones': 3, 'garaje': True, 'zona': 'B'},
-{'año': 2015, 'metros': 90, 'habitaciones': 2, 'garaje': False, 'zona': 'A'}]
+
+
+productos = [
+    {'nombre': 'Laptop A', 'categoria': 'Electrónica', 'puntuación': 4.5},
+    {'nombre': 'Laptop B', 'categoria': 'Electrónica', 'puntuación': 4.7},
+    {'nombre': 'Smartphone X', 'categoria': 'Electrónica', 'puntuación': 4.6},
+    {'nombre': 'Cafetera', 'categoria': 'Hogar', 'puntuación': 4.3},
+    {'nombre': 'Aspiradora', 'categoria': 'Hogar', 'puntuación': 4.8},
+    {'nombre': 'Silla Gamer', 'categoria': 'Muebles', 'puntuación': 4.4},
+    {'nombre': 'Escritorio', 'categoria': 'Muebles', 'puntuación': 4.1},
+]
+
+
+
+
+def mayor_puntuacion(productos):
+    mejores_categorias={}
+    categorias=set([categoria["categoria"] for categoria in productos])
+
+
+    for categoria in categorias:
+        mejores_categorias[categoria]= max(
+        [p for p in productos if p["categoria"] == categoria],
+        key=lambda x: x["puntuación"])
+
+    return mejores_categorias
+  
+
+mayor_puntuacion(productos)
+
