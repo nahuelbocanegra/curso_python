@@ -51,7 +51,38 @@ text = "Todo el mundo dice que la IA nos va a quitar el trabajo. Pero solo hace 
 pattern = "IA"
 
 result=re.search(pattern,text)
-print(result)
-print(result.start())
-print(result.end())
+
+
+if result :
+    print(result.start())
+    print(result.end())
+else:
+    print("no se encontro el patron del texto")
+
+#----------------------
+
+#encontrar toda las coincidencia de un patron .pindall()
+
+text= "me gusta python. python es lo maximo. aunque python no es tan dificil, ojo con python."
+pattern= "python"
+
+matches=re.findall(pattern,text) #retorna un lista con toda las coincidencias 
+
+print(len(matches))
+
+
+#------------------------------------------------------------------------
+
+#iter() devuelve un iterador que contienetoda los resultados de la busqueda
+
+text= "me gusta python. python es lo maximo. aunque python no es tan dificil, ojo con python."
+pattern= "py.hon" # . el punto es un caractr especial puede ser cualquier letra 
+
+matches = re.finditer(pattern,text) #devuelve tod las coincidencias con su indice inicial y final
+
+for match in matches:
+    print(match.group(),match.start(),match.end())
+
+
+
 

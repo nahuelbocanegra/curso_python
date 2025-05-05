@@ -6,12 +6,27 @@ entero_horas=input("ingrese un numero de horas: ")
 """
 def hora(hora_actual,entero_horas):
 
-    hora_actual= hora_actual.split(":")
-    hora=int(hora_actual[0])
-    minutos=int(hora_actual[1])
-    segundos=int(hora_actual[1])
 
-    print(hora,minutos,segundos)
+    hora=[int(h) for int(h) in hora_actual]
+
+    print(hora)
+
+
+   
+    
+   
+    if hora > 24:
+         hora_actual[0] = int(hora_actual[0]) - 24
+    else:
+        
+         print(hora_actual)
+
+    print(hora_actual)
+        
+
+
+
+
 
 
 
