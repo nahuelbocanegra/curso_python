@@ -34,3 +34,10 @@ pattern=r"a{3}" #devuelve las 3 primeras
 matches=re.findall(pattern,text)
 
 print(matches)
+
+#{n , m}: de n a m veces
+
+words="ala casa arbol murcielago leon"
+patters=r"\b\w{4,6}\b" #palabras de 2-3 letras
+matches=re.findall(patters,words)
+print(matches)
