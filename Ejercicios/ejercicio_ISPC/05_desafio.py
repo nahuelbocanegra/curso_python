@@ -11,3 +11,27 @@
 #  fuera divisible por 400.
 #  Escriba un programa que indique si un año es bisiesto o no, teniendo en cuenta cuál era
 #  el calendario vigente en ese año
+
+
+
+def es_bisiesto(anio):
+    if anio < 1582:
+        # Calendario juliano
+        return anio % 4 == 0
+    else:
+        # Calendario gregoriano
+        if anio % 4 != 0:
+            return False
+        elif anio % 100 != 0:
+            return True
+        elif anio % 400 == 0:
+            return True
+        else:
+            return False
+
+anio = int(input("Ingrese un año: "))
+
+if es_bisiesto(anio):
+    print(f"El año {anio} es bisiesto.")
+else:
+    print(f"El año {anio} no es bisiesto.")
