@@ -8,14 +8,25 @@
 #   - Expresión no balanceada: { a * ( c + d ) ] - 5 }
 
 
-def expresion_equilibrada(expresion):    
+def expresion_equilibrada(expresiones):    
 
-    expresion=expresion.replace(" ","")
+    expresiones=despejar(expresiones)
 
-    for i in expresion:
 
-        print(i)
+    if len(expresiones) % 2 != 0:
+        return f"Expresion no balanceada: {expresiones}"
+
+    return expresiones
+
+
+def despejar(expresiones):
     
+    for expresion in expresiones:
+        if expresion not in ["[","]","(",")","{","}"]:
+            expresiones=expresiones.replace(expresion,"")
+
+    return expresiones
+
 print(expresion_equilibrada( "[ a * ( c + d ) ] - 5 }"))
 
 
