@@ -11,24 +11,28 @@
 def expresion_equilibrada(expresiones):    
 
     expresiones=despejar(expresiones)
+    expresion_copia=expresiones
 
 
     if len(expresiones) % 2 != 0:
         return f"Expresion no balanceada: {expresiones}"
 
-    return expresiones
 
+    for i in range(3):
+        expresiones=expresiones.replace("()","")
+        expresiones=expresiones.replace("[]","")
+        expresiones=expresiones.replace("{}","")
+       
+    if len(expresiones) == 0:
+        return f"Expresion balanceada: {expresion_copia}"
+
+    return f"Expresion no balanceada: {expresion_copia}"
 
 def despejar(expresiones):
     
-    for expresion in expresiones:
-        if expresion not in ["[","]","(",")","{","}"]:
-            expresiones=expresiones.replace(expresion,"")
+    return ''.join([c for c in expresiones if c in "[](){}"])
 
-    return expresiones
-
-print(expresion_equilibrada( "[ a * ( c + d ) ] - 5 }"))
-
+print(expresion_equilibrada( "{[ a * ( c + d ) ] - 5 }"))
 
 
 
