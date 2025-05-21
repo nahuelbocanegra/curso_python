@@ -27,6 +27,12 @@ def obtener_autor(titulo):
         if libro[0] == titulo:
             return libro[1]
 
+    
+def calcular_annos_antes_de_morir(titulo):
+    for libro in libros:
+        if libro[0] == titulo:
+            annos_antes_de_morir= autores[libro[1]][1][0] - libro[2] 
+            return annos_antes_de_morir
 
 
 titulo = input('Ingrese titulo del libro: ')
