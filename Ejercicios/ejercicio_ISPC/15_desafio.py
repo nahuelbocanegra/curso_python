@@ -17,11 +17,9 @@ autores = {
 }
 
 def obtener_idioma(titulo):
-    pass
-def obtener_autor(titulo):
-    pass
-def calcular_annos_antes_de_morir(titulo):
-    pass
+    for libro in libros:
+        if titulo == libro[0]:
+           return autores[libro[1]][2]
 
 
 titulo = input('Ingrese titulo del libro: ')
