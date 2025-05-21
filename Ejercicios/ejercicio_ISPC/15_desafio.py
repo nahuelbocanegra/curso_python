@@ -21,6 +21,13 @@ def obtener_idioma(titulo):
         if titulo == libro[0]:
            return autores[libro[1]][2]
 
+    
+def obtener_autor(titulo):
+    for libro in libros:
+        if libro[0] == titulo:
+            return libro[1]
+
+
 
 titulo = input('Ingrese titulo del libro: ')
 print ('El libro fue escrito en', obtener_idioma(titulo),)
