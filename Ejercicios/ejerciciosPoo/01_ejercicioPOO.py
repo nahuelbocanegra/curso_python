@@ -12,11 +12,11 @@
 class Persona:
     def __init__(self,nombre,edad,DNI):
 
-        self.nombre= nombre,
+        self.nombre= nombre
         self.edad=edad
         self.DNI=DNI
 
-    def mostrar(self):
+    def mostrar_datos(self):
         
         print(f"nombre: {self.nombre}")
         print(f"edad: {self.edad}")
@@ -25,7 +25,7 @@ class Persona:
         
     def esMayorDeEdad(self):
 
-        if self.eddad >= 18:
+        if self.edad >= 18:
             return  True
         
         return False
@@ -34,33 +34,45 @@ class Persona:
 
 def main():
 
+    persona=None
+
     while True:
         
         print("1- crear persona ")
-        print("2- consultar edad ")
-        print("3- exit")
+        print("2- consultar si es mayor de edad ")
+        print("3- mostrar datos")
+        print("4- exit")
         opcion=int(input("ingrese una opcion: "))
 
         
         if opcion == 1:
             
+            nombre=input("ingrese su nombre: ")
             edad=int(input("ingrese su edad: "))
             dni=int(input("ingrese su DNI: "))
-            nombre=input("ingrese su nombre: ")
 
             persona=Persona(nombre,edad,dni)
 
         if opcion == 2:
+            if persona:
+                es_mayor=persona.esMayorDeEdad()
 
-            es_mayor=persona.esMayorDeEdad()
-
-            print("es mayor" if es_mayor else "no es mayor")
+                print("es mayor de edad" if es_mayor else "no es mayor de edad")
+            else:
+                print("primero ingrese los datos de la persona ")
 
         if opcion == 3:
+            if persona:
+                persona.mostrar_datos()
+            else:
+                print("primero ingrese los datos de la persona ")
+
+    
+        if opcion == 4:
              
             break
 
 
 
 if "__main__" == __name__:
-    crear_persona()
+    main()
