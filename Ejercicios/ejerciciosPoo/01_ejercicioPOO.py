@@ -32,3 +32,35 @@ class Persona:
 
 
 
+def main():
+
+    while True:
+        
+        print("1- crear persona ")
+        print("2- consultar edad ")
+        print("3- exit")
+        opcion=int(input("ingrese una opcion: "))
+
+        
+        if opcion == 1:
+            
+            edad=int(input("ingrese su edad: "))
+            dni=int(input("ingrese su DNI: "))
+            nombre=input("ingrese su nombre: ")
+
+            persona=Persona(nombre,edad,dni)
+
+        if opcion == 2:
+
+            es_mayor=persona.esMayorDeEdad()
+
+            print("es mayor" if es_mayor else "no es mayor")
+
+        if opcion == 3:
+             
+            break
+
+
+
+if "__main__" == __name__:
+    crear_persona()
