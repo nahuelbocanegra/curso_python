@@ -25,16 +25,18 @@ class CuentaBancaria:
         return f"Ingreso exitoso {ingreso},Nuevo saldo {self.saldo}"
 
     def retirar(self,retirar):
+
         if not isinstance(retirar,int):
             return "debe ser un entero"
         if retirar <= 0:
             return "debe ser mayor a 0"
         if self.saldo <= 0:
             return "saldo insuficiente"
-        
-        self.saldo-=retirar
-
-        return f"retiro de {retirar} exitoso,Nuevo saldo {self.saldo}"
+        if self.saldo>=retirar:
+            self.saldo-=retirar
+            return f"retiro de {retirar} exitoso,Nuevo saldo {self.saldo}"
+        else:
+            return "Saldo Insuficiente"
     
     def ver_saldo(self):
         return f" tu saldo es de {self.saldo} "
