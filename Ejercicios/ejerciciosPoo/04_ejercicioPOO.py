@@ -15,15 +15,26 @@ class CuentaBancaria:
         self.saldo=100000
     
     def depositar(self,ingreso):
+            
+        if not isinstance(ingreso,int):
+            return "debe ser un entero"
+        if ingreso <= 0:
+            return "debe ser mayor a 0"
+        
         self.saldo+=ingreso
+        return f"Ingreso exitoso {ingreso},Nuevo saldo {self.saldo}"
 
     def retirar(self,retirar):
+        if not isinstance(retirar,int):
+            return "debe ser un entero"
+        if retirar <= 0:
+            return "debe ser mayor a 0"
         if self.saldo <= 0:
             return "saldo insuficiente"
         
         self.saldo-=retirar
 
-        return f"retiro de {retirar} exitoso"
+        return f"retiro de {retirar} exitoso,Nuevo saldo {self.saldo}"
     
     def ver_saldo(self):
         return f" tu saldo es de {self.saldo} "
@@ -56,7 +67,7 @@ def main():
                 print("cuentra creada exitosamente")
             except ValueError:
                 print("dato invalido")
-                
+
 
 
 
