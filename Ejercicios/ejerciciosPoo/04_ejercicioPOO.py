@@ -30,8 +30,6 @@ class CuentaBancaria:
     
 def main():
 
-   
-
     while True:
 
         print("1- Crear cuenta")
@@ -40,22 +38,42 @@ def main():
         print("4- Ver Saldo ")
         print("5- Salir ")
 
-
-        opcion=int(input("Ingresar una opcion: "))
+        try:
+            opcion=int(input("Ingresar una opcion: "))
+        except ValueError:
+            print("entrada invalida")
+            continue
 
         if opcion == 1:
-            nombre=input("Ingrese su nombre: ")
-            apellido=input("Ingrese su apellido: ")
-            numero_cuenta=int(input("Ingrese el numero de cuenta: "))
 
-            cuenta=CuentaBancaria(nombre,apellido,numero_cuenta)
+            try:
+
+                nombre=input("Ingrese su nombre: ")
+                apellido=input("Ingrese su apellido: ")
+                numero_cuenta=int(input("Ingrese el numero de cuenta: "))
+
+                cuenta=CuentaBancaria(nombre,apellido,numero_cuenta)
+                print("cuentra creada exitosamente")
+            except ValueError:
+                print("dato invalido")
+                
+
+
 
         if opcion == 2:
             deposito=int(input("Ingresar deposito: "))
             cuenta.depositar(deposito)
+
         if opcion == 3:
-            pass
+            retiro=int(input("ingresa retiro: "))
+            cuenta.retirar(retiro)
+
         if opcion == 4:
-            pass
+            cuenta.ver_saldo()
+
         if opcion == 5:
             break
+
+
+if __name__ == "__main__":
+    main()
