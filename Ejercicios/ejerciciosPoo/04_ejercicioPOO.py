@@ -28,3 +28,14 @@ class CuentaBancaria:
     def ver_saldo(self):
         return f" tu saldo es de {self.saldo} "
     
+def main():
+
+    while True:
+
+        print("1- Depositar ")
+        print("2- Retirar ")
+        print("3- Ver Saldo ")
+        print("4- Salir ")
+
+
+        
