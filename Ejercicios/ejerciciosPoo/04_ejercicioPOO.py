@@ -9,9 +9,9 @@
 
 class CuentaBancaria:
     def __init__(self,numero_cuenta,nombre,apellido):
-        self.numero_cuenta=numero_cuenta
         self.nombre=nombre
         self.apellido=apellido
+        self.numero_cuenta=numero_cuenta
         self.saldo=100000
     
     def depositar(self,ingreso):
@@ -30,12 +30,32 @@ class CuentaBancaria:
     
 def main():
 
+   
+
     while True:
 
-        print("1- Depositar ")
-        print("2- Retirar ")
-        print("3- Ver Saldo ")
-        print("4- Salir ")
+        print("1- Crear cuenta")
+        print("2- Depositar ")
+        print("3- Retirar ")
+        print("4- Ver Saldo ")
+        print("5- Salir ")
 
 
-        
+        opcion=int(input("Ingresar una opcion: "))
+
+        if opcion == 1:
+            nombre=input("Ingrese su nombre: ")
+            apellido=input("Ingrese su apellido: ")
+            numero_cuenta=int(input("Ingrese el numero de cuenta: "))
+
+            cuenta=CuentaBancaria(nombre,apellido,numero_cuenta)
+
+        if opcion == 2:
+            deposito=int(input("Ingresar deposito: "))
+            cuenta.depositar(deposito)
+        if opcion == 3:
+            pass
+        if opcion == 4:
+            pass
+        if opcion == 5:
+            break
