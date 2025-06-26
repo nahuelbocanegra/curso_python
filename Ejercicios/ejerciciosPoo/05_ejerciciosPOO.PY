@@ -7,7 +7,7 @@
 #  detenerse. Al finalizar deberá mostrar los datos del vehículo y el kilometraje
 #  recorrido.
 
-class vehiculo:
+class Vehiculo:
     def __init__(self,color,marca,modelo,patente):
          self.color=color
          self.marca=marca  
@@ -32,3 +32,45 @@ class vehiculo:
 
         """
     
+def main():
+
+    while True:
+
+        print("1- Crear vehiculo")
+        print("2- ver datos del vehiculo")
+        print("3- conducir")
+        print("4- Salir ")
+
+        try:
+            opcion=int(input("Ingresar una opcion: "))
+        except ValueError:
+            print("entrada invalida")
+            continue
+
+        if opcion == 1:
+
+            try:
+                
+                color=input("Ingrese su nombre: ")
+                marca=input("Ingrese su nombre: ")
+                modelo=input("Ingrese su apellido: ")
+                patente=input("Ingrese el numero de cuenta: ")
+
+                auto=Vehiculo(color,marca,modelo,patente)
+                print("vehiculo creado exitosamente")
+            except ValueError:
+                print("dato invalido")
+
+        if auto:
+
+
+
+            if opcion == 2:
+                auto.datos_autos()
+            if opcion == 3:
+                while km_recorridos != 0:
+                    km_recorridos=int(input("cuantos km recorrio / 0 para terminar de cargar"))
+                    auto.conducir_auto(km_recorridos)
+
+        if opcion == 4:
+                break
