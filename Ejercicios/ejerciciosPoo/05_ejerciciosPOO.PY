@@ -74,3 +74,6 @@ def main():
 
         if opcion == 4:
                 break
+
+if __name__ == "__main__":
+    main()
