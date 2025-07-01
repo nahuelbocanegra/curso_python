@@ -17,12 +17,14 @@ class ControlVolumen:
         if self.volumen >= 10:
             return "volumen al maximo"
         self.volumen+=1
+        print(f"volumen: {self.volumen}")
     
 
     def bajar_volumen(self):
         if self.volumen <= 1:
             return "volumen al minimo"
         self.volumen-=1
+        print(f"volumen: {self.volumen}")
 
 def main():
     control=ControlVolumen()
@@ -45,7 +47,9 @@ def main():
             control.bajar_volumen()
         elif opcion == 3:
             control.subir_volumen()
+          
         elif opcion == 4:
+            print(f"volumen: {control.mostrar_volumen()}")
             break
         else:
             print("opcion invalida")
