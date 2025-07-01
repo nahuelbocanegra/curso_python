@@ -6,3 +6,22 @@
 #  permita al usuario manipular y consultar el volumen hasta que decida salir. Al
 #  finalizar deberá mostrar el nivel actual de volumen.
 
+class ControlVolumen:
+    def __init__(self):
+        self.volumen=5
+
+    def mostrar_volumen(self):
+       return  self.volumen
+    
+    def subir(self):
+        if self.volumen >= 10:
+            return "volumen al maximo"
+        self.volumen+=1
+    
+
+    def bajar(self):
+        if self.volumen <= 1:
+            return "volumen al minimo"
+        self.volumen-=1
+    
+
