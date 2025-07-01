@@ -6,3 +6,16 @@
 #  programa de consola que permita vender las entradas.
 #  El menú del programa debe ser el siguiente: 1- Mostrar número de entradas libres,
 #  2- Vender entradas y 3- Salir
+
+class Voleteria:
+    def __init__(self):
+        self.principal=1000
+        self.compra_venta=200
+        self.vip=25
+
+    def mostrar_entradas_disponibles(self):
+        pass
+
+    def vender_entradas(self):
+        pass
+    
