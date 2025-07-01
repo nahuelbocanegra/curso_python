@@ -13,15 +13,40 @@ class ControlVolumen:
     def mostrar_volumen(self):
        return  self.volumen
     
-    def subir(self):
+    def subir_volumen(self):
         if self.volumen >= 10:
             return "volumen al maximo"
         self.volumen+=1
     
 
-    def bajar(self):
+    def bajar_volumen(self):
         if self.volumen <= 1:
             return "volumen al minimo"
         self.volumen-=1
-    
+
+def main():
+    control=ControlVolumen()
+    while True:
+
+        print("1- consultar volumen ")
+        print("2- bajar volumen ")
+        print("3- subir volumen ")
+        print("4- salir ")
+
+        try:
+            opcion=int(input("ingrese una opcion:"))
+        except ValueError:
+            print("valor incorrecto")
+            continue
+
+        if opcion == 1:
+            control.mostrar_volumen()
+        elif opcion == 2:
+            control.bajar_volumen()
+        elif opcion == 3:
+            control.subir_volumen()
+        elif opcion == 4:
+            break
+        else:
+            print("opcion invalida")
 
