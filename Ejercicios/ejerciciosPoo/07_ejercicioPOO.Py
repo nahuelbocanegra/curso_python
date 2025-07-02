@@ -19,3 +19,26 @@ class Voleteria:
     def vender_entradas(self):
         pass
     
+
+def main():
+    voleteria=Voleteria()
+    while True:
+        print("1 mostrar entradas disponibles")
+        print("2 comprar entradas ")
+        print("3 salir")
+        
+        try:
+            opcion=int(input("ingrese un opcion"))
+        except ValueError:
+            print("valor erroneo ")
+
+        if opcion == 1:
+            voleteria.mostrar_entradas_disponibles()
+        if opcion == 2:
+            voleteria.vender_entradas()
+        if opcion == 3:
+            print("vuelva pronto")
+            break
+
+if __name__ == "__main__":
+    main()
