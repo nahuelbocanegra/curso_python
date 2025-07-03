@@ -14,12 +14,45 @@ class Voleteria:
         self.vip=25
 
     def mostrar_entradas_disponibles(self):
-        pass
+        print(f"\nEntradas disponibles \nPrincipal: {self.principal}\nCompra-Venta: {self.compra_venta}\nVip: {self.vip}\n")
 
     def vender_entradas(self):
-        pass
-    
+        while True:
+            print("¿Que entrada desea comprar?")
 
+            print("1 Entradas Principal")
+            print("2 Compra y Venta ")
+            print("3 VIP" )
+            print("4 salir")
+        
+            try: 
+                opcion=int(input("ingrese un opcion: "))
+                cantidad=int(input("¿Cuantas entradas desea comprar?"))
+            except ValueError:
+                print("valor erroneo ")
+                continue
+
+            if opcion == 1:
+                if self.principal <= 0 or self.principal < cantidad:
+                    print("no hay suficientes entradas")
+                    continue
+                self.principal-=cantidad     
+            elif opcion == 2:
+                if self.compra_venta <= 0 or self.compra_venta < cantidad:
+                    print("no hay suficientes entradas")
+                    continue
+                self.compra_venta-=cantidad
+            elif opcion == 3:
+                if self.vip <= 0 or self.vip < cantidad:
+                    print("no hay suficientes entradas")
+                    continue
+                self.vip-=cantidad
+            elif opcion == 4:
+                break     
+            else:
+                print("opcion invalida")
+
+   
 def main():
     voleteria=Voleteria()
     while True:
@@ -28,17 +61,21 @@ def main():
         print("3 salir")
         
         try:
-            opcion=int(input("ingrese un opcion"))
+            opcion=int(input("ingrese un opcion: "))
         except ValueError:
             print("valor erroneo ")
+            continue
+            
 
         if opcion == 1:
             voleteria.mostrar_entradas_disponibles()
-        if opcion == 2:
+        elif opcion == 2:
             voleteria.vender_entradas()
-        if opcion == 3:
+        elif opcion == 3:
             print("vuelva pronto")
             break
+        else:
+            print("opcion invalida")
 
 if __name__ == "__main__":
     main()
