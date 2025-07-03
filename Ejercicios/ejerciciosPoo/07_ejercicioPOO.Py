@@ -27,13 +27,18 @@ class Voleteria:
         
             try: 
                 opcion=int(input("ingrese un opcion: "))
-                cantidad=int(input("¿Cuantas entradas desea comprar?"))
             except ValueError:
                 print("valor erroneo ")
                 continue
            
             if opcion in [1,2,3]:
-                self.__entradas(opcion,cantidad)
+                try: 
+                    cantidad=int(input("¿Cuantas entradas desea comprar?: "))
+                except ValueError:
+                    print("valor erroneo ")
+                    continue
+                print(self.__entradas(opcion,cantidad))
+                continue
             if opcion == 4:
                 break     
             else:
@@ -42,14 +47,16 @@ class Voleteria:
            
 
     def __entradas(self,opcion,cantidad):
+
         tipos_entradas=[self.principal,self.compra_venta,self.vip]
 
-       
         if tipos_entradas[opcion-1] <= 0 or tipos_entradas[opcion-1] < cantidad:
-                
-                return "no hay suficientes entradas"
+            return "no hay suficientes entradas"
                     
         tipos_entradas[opcion-1]-=cantidad     
+        self.mostrar_entradas_disponibles()
+
+        return "gracias por su compra"
       
            
         
