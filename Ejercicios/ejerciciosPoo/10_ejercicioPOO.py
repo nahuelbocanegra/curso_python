@@ -19,21 +19,37 @@ class Libro:
 
 
 class Biblioteca():
+
+
     libros = [
-        {"titulo": "Cien años de soledad", "autor": "Gabriel García Márquez", "estado": "Disponible"},
-        {"titulo": "1984", "autor": "George Orwell", "estado": "Prestado"},
-        {"titulo": "El principito", "autor": "Antoine de Saint-Exupéry", "estado": "Disponible"},
-        {"titulo": "Fahrenheit 451", "autor": "Ray Bradbury", "estado": "Disponible"},
-        {"titulo": "Don Quijote de la Mancha", "autor": "Miguel de Cervantes", "estado": "Prestado"},
+        Libro( "Cien años de soledad","Gabriel García Márquez","Disponible"),
+        Libro("1984","George Orwell","Prestado"),
+        Libro("El principito","Antoine de Saint-Exupéry","Disponible"),
+        Libro("Fahrenheit 451","Ray Bradbury","Disponible"),
+        Libro("Don Quijote de la Mancha","Miguel de Cervantes","Prestado"),
     ]
-    def mostrar_libros():
+
+
+    def mostrar_libros(self):
+        for libro in self.libros:
+            print(f"libro:{libro.titulo}")
+            print(f"autor:{libro.autor}")
+            print(f"estado:{libro.estado}")
+
+
+
+    def agregar_libro(self):
+        
+        titulo_libro=input("ingrese el nombre de el libro: ")
+        autor_libro=input("ingrese el nombre del autor de el libro: ")
+        
+        self.libros.append(Libro(titulo_libro,autor_libro,"Disponible"))
+        
+            
+    def eliminar_libro(self):
         pass
-    def agregar_libro():
-        pass
-    def eliminar_libro():
-        pass
-    def mostrar_estado():
-        pass
+
+    
     def buscar_libro(self,titulo,autor,libros):
         libro=None
         for libro in libros:
@@ -45,6 +61,9 @@ class Biblioteca():
 
     def mostrar_estado(libro):
         print(libro["estado"])
+
+    def cambiar_estado(self):
+        pass
         
 
 
@@ -52,12 +71,12 @@ class Menu:
     biblioteca=Biblioteca()
     def __init__(self):
         self.menu_opciones={
-            "1":self.biblioteca.mostrar_libros(),
-            "2":self.biblioteca.agregar_libro(),
-            "3":self.biblioteca.eliminar_libro(),
-            "4":self.biblioteca.buscar_libro(),
-            "5":self.biblioteca.mostrar_estado(),
-            "6":self.salir(),
+            "1":self.biblioteca.mostrar_libros,
+            "2":self.biblioteca.agregar_libro,
+            "3":self.biblioteca.eliminar_libro,
+            "4":self.biblioteca.buscar_libro,
+            "5":self.biblioteca.mostrar_estado,
+            "6":self.salir,
         }
 
     def mostrar_menu(self):
