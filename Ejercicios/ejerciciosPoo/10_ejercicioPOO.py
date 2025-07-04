@@ -48,4 +48,39 @@ class Biblioteca():
         
 
 
+class Menu:
+    biblioteca=Biblioteca()
+    def __init__(self):
+        self.menu_opciones={
+            "1":"",
+            "2":"",
+            "3":"",
+            "4":"",
+            "5":"",
+            "6":"",
+        }
+
+    def mostrar_menu(self):
+        print("1- Mostrar libros")
+        print("2- Agregar Libro")
+        print("3- Eliminar Libro")        
+        print("4- Buscar Libro")
+        print("5- Mostrar estado")
+        print("6- Salir ")
+
+        
+        while True:
+            try:
+                opcion=input("Ingresar opcion: ")
+            except ValueError:
+                print("valor erroneo: ")
+
+            accion= self.menu_opciones.get(opcion)
+            
+            if accion: 
+                accion()
+            else:
+                print("opcion invalida")
+      
+
 
