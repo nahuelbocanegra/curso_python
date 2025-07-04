@@ -52,12 +52,12 @@ class Menu:
     biblioteca=Biblioteca()
     def __init__(self):
         self.menu_opciones={
-            "1":"",
-            "2":"",
-            "3":"",
-            "4":"",
-            "5":"",
-            "6":"",
+            "1":self.biblioteca.mostrar_libros(),
+            "2":self.biblioteca.agregar_libro(),
+            "3":self.biblioteca.eliminar_libro(),
+            "4":self.biblioteca.buscar_libro(),
+            "5":self.biblioteca.mostrar_estado(),
+            "6":self.salir(),
         }
 
     def mostrar_menu(self):
@@ -83,4 +83,5 @@ class Menu:
                 print("opcion invalida")
       
 
-
+    def salir():
+            exit()
