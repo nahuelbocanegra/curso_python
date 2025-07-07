@@ -20,6 +20,3 @@ def hello(name):
 def user_profile(username):
     return f"User {escape(username)}"
 
-
-if __name__ == "__main__":
-    app.run(debug=True)
