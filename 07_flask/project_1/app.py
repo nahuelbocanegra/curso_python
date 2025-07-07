@@ -1,11 +1,28 @@
-from flask import Flask,render_template,redirect,url_for,abort
+from flask import Flask,render_template,redirect,url_for,abort,session,request
 
 app=Flask(__name__)
+#python -c import secrets; print(secrets.token_hex()) libreria de python para generar secret_key
+app.secret_key="7f326bae76f522e71271808ede08d217b9ee7238603102d74d294ca8d9e2308b"
+
 
 @app.route("/") #ruta raiz
 def inicio():
-    return "Hola desde flask V2.0"
+    
+    #sessions => es un diccionario que almacena datos para cada usuario conectado
 
+    if "username" in session:
+        return f"usuario incio sesion {session['username']}"
+    return "no sesion"
+
+
+
+@app.route("/login",methods=["GET","POST"])
+def login():
+    if request.method == "POST":
+        session["username"] = request.form["username"]
+        return redirect(url_for("inicio"))
+    return render_template("login.html")
+  
 #direccion ip loopback 
     # direccion especial que se utiliza para 
     # comunicarse con el mismo dispositivo de red 
@@ -14,6 +31,8 @@ def inicio():
 #SET FLASK_DEBUG=True => SE VA RECARGAR CON CADA CAMBIO QUE HAGAS
 #VARIABLE DE ENTORNO
 
+#diferentes rutas pueden contener la misma funcion
+@app.route("/hola/<nombre>") 
 @app.route("/saludar/<nombre>") #<nombre> parametro
 def saludar(nombre):
     return f"hola {nombre}"
@@ -26,6 +45,11 @@ def edad(edad):
 @app.route("/mostrar/<nombre>")
 def mostrar(nombre):
     return render_template("mostrar.html",valor=nombre) #retornando un archivo html 
+
+
+@app.route("/datos/<valor>", methods=["GET","POST"]) #estos metodos estan aceptados en esta ruta [GET,POST]
+def mostrar_datos(valor):
+    return f"Datos recibido: {valor} "
 
 #redireccion de rutas
 
@@ -46,7 +70,6 @@ def error():
 @app.errorhandler(404) # decorador que recibe errores 
 def pagina_no_found(error):
     return render_template("404.html",error=error),404 #por defecto el render_tempate te devuelve un codigo 200 
-
 
 
 
