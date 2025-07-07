@@ -1,5 +1,9 @@
 from flask import Flask
 from markupsafe import escape
+
+#Flask => microframework
+
+
 app = Flask(__name__) #instancia de clase 
 
 #__name__ es el nombre del modulo o app 
