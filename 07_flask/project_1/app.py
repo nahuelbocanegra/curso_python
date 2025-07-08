@@ -8,7 +8,8 @@ app.secret_key="7f326bae76f522e71271808ede08d217b9ee7238603102d74d294ca8d9e2308b
 @app.route("/") #ruta raiz
 def inicio():
     
-    #sessions => es un diccionario que almacena datos para cada usuario conectado
+    #sessions => es un diccionario que almacena datos para cada usuario conectado en web
+
 
     if "username" in session:
         return f"usuario incio sesion {session['username']}"
@@ -22,7 +23,10 @@ def login():
         session["username"] = request.form["username"]
         return redirect(url_for("inicio"))
     return render_template("login.html")
-  
+@app.route("/logout")
+def logout():
+    session.pop("username",None) #cerrar sesion
+    return redirect(url_for("inicio"))
 #direccion ip loopback 
     # direccion especial que se utiliza para 
     # comunicarse con el mismo dispositivo de red 
