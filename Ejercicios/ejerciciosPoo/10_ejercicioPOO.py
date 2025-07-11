@@ -31,10 +31,11 @@ class Biblioteca():
 
 
     def mostrar_libros(self):
+        print("----- Lista de Libros -----")
         for libro in self.libros:
-            print(f"libro:{libro.titulo}")
-            print(f"autor:{libro.autor}")
-            print(f"estado:{libro.estado}")
+            print(f" - libro:{libro.titulo}")
+          
+            
 
 
 
@@ -42,7 +43,7 @@ class Biblioteca():
         
         titulo_libro=input("ingrese el nombre de el libro: ").lower()
         autor_libro=input("ingrese el nombre del autor de el libro: ").lower()
-        
+
             
         print(" libro cargado con exito ")
         self.libros.append(Libro(titulo_libro,autor_libro,"Disponible"))
@@ -60,18 +61,21 @@ class Biblioteca():
 
     
     
-    def buscar_libro(self,titulo,autor,libros):
-        libro=None
-        for libro in libros:
-            if libro["titulo"] == titulo:
-                print(libro)
-            if libro["autor"] == autor:
-                print(libro)
-        self.mostrar_estado(libro)
+    def buscar_libro(self):
+        titulo_libro=input("titulo (dejar vacio si no lo conoce): ").lower()
+        autor_libro=input("autor (dejar vacio si no lo conoce): ").lower()
 
-    def mostrar_estado(libro):
-        print(libro["estado"])
+        encontrados=[libro for libro in self.libros  if (titulo_libro in libro.titulo.lower() or not titulo_libro) and 
+                     (autor_libro in libro.autor.lower() or not autor_libro) ]
 
+        if encontrados:
+            for libro in encontrados:
+                print(f" - {libro.autor} ")
+                print(f" - {libro.titulo} ")
+                print(f" - {libro.estado} ")
+        else:
+            print("libro no encontrado")
+           
     def cambiar_estado(self):
         pass
         
@@ -85,9 +89,8 @@ class Menu:
             "2":self.biblioteca.agregar_libro,
             "3":self.biblioteca.eliminar_libro,
             "4":self.biblioteca.buscar_libro,
-            "5":self.biblioteca.mostrar_estado,
-            "6":self.biblioteca.cambiar_estado,
-            "7":self.salir,
+            "5":self.biblioteca.cambiar_estado,
+            "6":self.salir,
         }
 
     def mostrar_menu(self):
@@ -95,9 +98,8 @@ class Menu:
         print("2- Agregar Libro")
         print("3- Eliminar Libro")        
         print("4- Buscar Libro")
-        print("5- Mostrar estado")
-        print("6- Cambiar estado")
-        print("7- Salir ")
+        print("5- Cambiar estado")
+        print("6- Salir ")
 
         
         while True:
@@ -114,5 +116,10 @@ class Menu:
                 print("opcion invalida")
       
 
-    def salir():
-            exit()
+    def salir(self):
+        print("hasta luego!! ")
+        exit()
+
+if __name__ == "__main__":
+    menu=Menu()
+    menu.mostrar_menu()

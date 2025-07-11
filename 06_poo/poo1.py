@@ -9,7 +9,7 @@ class Coche:
     
     def __init__(self):
         
-        self.__largo_chasis=250
+        self.__largo_chasis=250 #encapsular = necesitamos que no sea accesible desde fuera de la clase
         self.__ancho_chasis=120
         self.__ruedas=4
         self.__enmarcha=False
