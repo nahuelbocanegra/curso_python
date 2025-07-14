@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Listado de cursos</title>
+</head>
+<body>
+    <h1>Lista de cursos</h1>
+    <div>
+        Cantidad de cursos :{{total}}
+    </div>
+    <div>
+        <table>
+            <thead style="text-align: center;">
+                <tr>
+                    <th>id</th>
+                    <th>Curso</th>
+                    <th>Instructor</th>
+                    <th>Topico</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for curso in datos %}
+                    <tr  style="text-align: center;">
+                        <td>{{curso.id}}</td>
+                        <td>{{curso.nombre}}</td>
+                        <td>{{curso.instructor}}</td>
+                        <td>{{curso.topico}}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
