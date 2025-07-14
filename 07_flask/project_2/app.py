@@ -1,9 +1,8 @@
 from flask import Flask,render_template
 from flask_sqlalchemy import SQLAlchemy
-from sqlalchemy.orm import Mapped,mapped_column
-from sqlalchemy import String
 from flask_migrate import Migrate
 from variable_entorno import USER_DB,USER_PASSWORD,SERVER_DB,NAME_DB
+from models import Cursos
 
 app=Flask(__name__)
 
@@ -20,21 +19,7 @@ db=SQLAlchemy(app)
 migrate=Migrate()
 migrate.init_app(app,db)
 
-#modelo de datos
 
-class Cursos(db.Model):
-    id: Mapped[int]=mapped_column(String(100),primary_key=True)
-    nombre:Mapped[str]=mapped_column(String(100),unique=True)
-    instructor:Mapped[str]=mapped_column(String(100))
-    topico:Mapped[str]=mapped_column(String(100))
-
-    def __str__(self):
-        return f"""
-            id:{self.id}
-            nombre:{self.nombre}
-            instructor:{self.instructor}
-            topico:{self.topico}
-        """
 
 if __name__ == "__main__":
     app.run(debug=True)
@@ -55,3 +40,4 @@ def ver_curso(id):
 @app.route("/insertar_curso",["GET","POST"])
 def insertar_curso():
     pass 
+
