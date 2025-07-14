@@ -3,6 +3,7 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 from variable_entorno import USER_DB,USER_PASSWORD,SERVER_DB,NAME_DB
 from models import Cursos
+from database import db
 
 app=Flask(__name__)
 
@@ -12,17 +13,13 @@ FULL_URL_DB=f"mysql+pymysql://{USER_DB}:{USER_PASSWORD}@{SERVER_DB}/{NAME_DB}"
 
 app.config['SQLALCHEMY_DATABASE_URI']=FULL_URL_DB
 
-db=SQLAlchemy(app)
 
 #migrar el modelo
 
-migrate=Migrate()
-migrate.init_app(app,db)
+db.init_app(app)
+migrate=Migrate(app,db)
 
 
-
-if __name__ == "__main__":
-    app.run(debug=True)
 
 @app.route("/")
 def inicio():
@@ -37,7 +34,10 @@ def ver_curso(id):
     curso=Cursos.query.get(id) #buscar el registro en la base de datos
     return render_template("cursos_detalle.html",dato=curso)
 
-@app.route("/insertar_curso",["GET","POST"])
+@app.route("/insertar_curso",methods=["GET","POST"])
 def insertar_curso():
     pass 
 
+
+if __name__ == "__main__":
+    app.run(debug=True)
