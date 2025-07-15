@@ -53,7 +53,7 @@ def insertar_curso():
     return render_template("insertar_cursos.html",formulario=cursoForm)
 
 
-@app.route("editar_curso/<int:id>",methods=["GET","POST"])
+@app.route("/editar_curso/<int:id>",methods=["GET","POST"])
 def actualizar_datos(id):
     curso=Cursos.query.get_or_404(id)
     cursoForm=CursoForm(obj=curso)
