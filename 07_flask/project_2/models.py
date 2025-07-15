@@ -6,7 +6,7 @@ from sqlalchemy import String
 
 #modelo de datos
 class Cursos(db.Model):
-    id: Mapped[int]=mapped_column(String(100),primary_key=True)
+    id: Mapped[int]=mapped_column(primary_key=True,autoincrement=True)
     nombre:Mapped[str]=mapped_column(String(100),unique=True)
     instructor:Mapped[str]=mapped_column(String(100))
     topico:Mapped[str]=mapped_column(String(100))

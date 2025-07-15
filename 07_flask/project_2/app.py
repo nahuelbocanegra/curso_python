@@ -1,4 +1,4 @@
-from flask import Flask,render_templatem,request
+from flask import Flask, render_template ,request ,redirect ,url_for
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 from variable_entorno import USER_DB,USER_PASSWORD,SERVER_DB,NAME_DB,SECRET_KEY
@@ -21,7 +21,7 @@ app.config['SQLALCHEMY_DATABASE_URI']=FULL_URL_DB
 db.init_app(app)
 migrate=Migrate(app,db)
 
-app.confif["SECRET_KEY"]=SECRET_KEY
+app.config["SECRET_KEY"]=SECRET_KEY
 
 
 @app.route("/")
@@ -44,9 +44,13 @@ def insertar_curso():
 
 
     if request.method == "POST":
-        pass
+        if cursoForm.validate_on_submit():
+            cursoForm.populate_obj(curso)
+            db.session.add(curso)
+            db.session.commit()
+            return redirect(url_for("inicio"))
     
-    return render_templatem("insertar-curso.html",formulario=cursoForm)
+    return render_template("insertar_cursos.html",formulario=cursoForm)
 
 
 if __name__ == "__main__":
