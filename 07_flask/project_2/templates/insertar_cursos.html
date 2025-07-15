@@ -3,27 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{url_for('static' ,filename='css/form.css')}}">
     <title>Insertar curso</title>
 </head>
 <body>
-    <h1>Insertar un curso</h1>
+    <h1 class="titulo-formulario">Insertar un curso</h1>
 
-    <form method="post">
+    <form method="post" class="formulario">
         {{formulario.csrf_token}}
-        <div>
+        <div class="campo">
             {{formulario.nombre.label}}
             {{formulario.nombre(size=50)}}
         </div>
-        <div>
+        <div class="campo">
             {{formulario.instructor.label}}
             {{formulario.instructor(size=30)}}
         </div>
-        <div>
+        <div class="campo">
             {{formulario.topico.label}}
             {{formulario.topico(size=30)}}
         </div>
-        <div>
-          {{formulario.enviar}}
+        <div class="campo">
+          {{formulario.enviar(class="boton")}}
         </div>
     </form>
     
