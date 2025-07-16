@@ -25,6 +25,7 @@
                     <th>Curso</th>
                     <th>Detalles</th>
                     <th>Actualizar</th>
+
                 </tr>
             </thead>
             <tbody>
@@ -32,8 +33,11 @@
                     <tr  style="text-align: center;">
                         <td>{{curso.id}}</td>
                         <td>{{curso.nombre}}</td>
-                        <td align="center"> <a class="ver-detalle" href="curso/{{curso.id}}">Ver</a></td>
-                        <td><a href="editar_curso/{{curso.id}}">Editar</a></td>
+                        <td align="center"> 
+                            <a class="ver-detalle" href="curso/{{curso.id}}">Ver</a>
+                            <a href="editar_curso/{{curso.id}}">Editar</a>
+                            <a href="eliminar_curso/{{curso.id}}">Eliminar</a>
+                        </td>
                     </tr>
                 {% endfor %}
             </tbody>

@@ -26,7 +26,7 @@ app.config["SECRET_KEY"]=SECRET_KEY
 
 @app.route("/")
 def inicio():
-    cursos=Cursos.query.all()
+    cursos=Cursos.query.order_by('id')
     total_cursos=Cursos.query.count()
 
     
@@ -60,8 +60,19 @@ def actualizar_datos(id):
     if request.method=="POST":
        if cursoForm.validate_on_submit():
            cursoForm.populate_obj(curso)
-           app.logger.debug(f"curso actualizar:{curso}") 
+        #app.logger.debug(f"curso actualizar:{curso}") 
+           db.session.commit()
+           return redirect(url_for('inicio'))
     return render_template("editar_curso.html",formulario=cursoForm)
+
+
+@app.route("/eliminar_curso/<int:id>")
+def eliminar_curso(id):
+    curso= Cursos.query.get(id)
+    db.session.delete(curso)
+    db.session.commit()
+    return redirect(url_for("inicio"))
+
 
 if __name__ == "__main__":
     app.run(debug=True)
