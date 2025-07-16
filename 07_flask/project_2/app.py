@@ -57,6 +57,10 @@ def insertar_curso():
 def actualizar_datos(id):
     curso=Cursos.query.get_or_404(id)
     cursoForm=CursoForm(obj=curso)
+    if request.method=="POST":
+       if cursoForm.validate_on_submit():
+           cursoForm.populate_obj(curso)
+           app.logger.debug(f"curso actualizar:{curso}") 
     return render_template("editar_curso.html",formulario=cursoForm)
 
 if __name__ == "__main__":
