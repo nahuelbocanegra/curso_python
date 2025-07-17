@@ -14,6 +14,7 @@ app.config['SQLALCHEMY_DATABASE_URI']=FULL_URL_DB
 def inicio():
     return render_template("index.html")
 
-@app.route("/mensaje/<int:id>")
-def mensaje(id):
+@app.route("/mensaje")
+def insertar_mensaje(id):
     pass
+
