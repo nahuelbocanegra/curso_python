@@ -1,6 +1,4 @@
 from flask import Flask ,render_template 
-from flask_sqlalchemy import SQLAlchemy
-from sqlalchemy.orm import Mapped,mapped_column
 from variables_entorno import DB_NAME,USER_NAME,SERVER_NAME,USER_PASSWORD,SECRET_KEY
 
 app=Flask(__name__)
