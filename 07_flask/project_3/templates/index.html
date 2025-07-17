@@ -7,6 +7,11 @@
 </head>
 <body>
     <h1>Mensajes</h1>
-    
+    <div>
+        {% for mensaje in datos: %}
+            <h2>{{mensaje.titulo}}</h2>
+            <p>{{mensaje.mensaje}}</p>
+        {% endfor %}
+    </div>
 </body>
 </html>

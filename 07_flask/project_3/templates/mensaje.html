@@ -6,19 +6,21 @@
     <title>mensaje</title>
 </head>
 <body>
-    <div>
+    <form method="post">
+        {{formulario.csrf_token}}
+
         <div>
-            {{mensaje.titulo.label}}
-            {{mensaje.titulo(size=50)}}
+            {{formulario.titulo.label}}
+            {{formulario.titulo(size=50)}}
         </div>
         <div>
-            {{mensaje.mensaje.label}}
-            {{mensaje.mensaje}}
+            {{formulario.mensaje.label}}
+            {{formulario.mensaje}}
         </div>
         <div>
-            {{mensaje.enviar(class="boton")}}
+            {{formulario.enviar(class="boton")}}
         </div>
-    </div>
+    </form>
     
 </body>
 </html>

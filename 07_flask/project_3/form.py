@@ -3,6 +3,6 @@ from wtforms import StringField, TextAreaField , SubmitField #Importa un campo d
 from wtforms.validators import DataRequired #Importa un validador que obliga a que el campo no esté vacío.
 
 class MensajeForm(FlaskForm):
-    titulo=StringField("Titulo del mensaje",validators=[DataRequired()])
+    titulo=StringField("Titulo",validators=[DataRequired()])
     mensaje=TextAreaField("Mensaje",validators=[DataRequired()])
     enviar=SubmitField("Enviar")
