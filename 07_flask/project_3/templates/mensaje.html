@@ -8,8 +8,15 @@
 <body>
     <div>
         <div>
-            <label for="mensaje">Escribe el mensaje</label>
-            <textarea name="" id=""></textarea>
+            {{mensaje.titulo.label}}
+            {{mensaje.titulo(size=50)}}
+        </div>
+        <div>
+            {{mensaje.mensaje.label}}
+            {{mensaje.mensaje}}
+        </div>
+        <div>
+            {{mensaje.enviar(class="boton")}}
         </div>
     </div>
     
