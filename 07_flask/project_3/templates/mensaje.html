@@ -3,24 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{url_for('static',filename='css/form.css')}}">
     <title>mensaje</title>
 </head>
 <body>
-    <form method="post">
-        {{formulario.csrf_token}}
+    <div class="formulario-container">
+        <div class="btn-volver-container">
+            <a class="btn-volver" href="{{url_for('inicio')}}">Inicio</a>
+        </div>
 
-        <div>
-            {{formulario.titulo.label}}
-            {{formulario.titulo(size=50)}}
-        </div>
-        <div>
-            {{formulario.mensaje.label}}
-            {{formulario.mensaje}}
-        </div>
-        <div>
-            {{formulario.enviar(class="boton")}}
-        </div>
-    </form>
-    
+        <form method="post" class="formulario-form">
+            {{formulario.csrf_token}}
+            
+            <div class="formulario-campo">
+                {{formulario.titulo.label(class="formulario-label")}}
+                {{formulario.titulo(size=40,class="formulario-input")}}
+            </div>
+            <div class="formulario-campo">
+                {{formulario.mensaje.label(class="formulario-label")}}
+                {{formulario.mensaje(class="formulario-textarea")}}
+            </div>
+            <div class="formulario-campo">
+                {{formulario.enviar(class="formulario-boton")}}
+            </div>
+        </form>
+        
+
+    </div>
 </body>
 </html>

@@ -1,0 +1,84 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+/* Contenedor principal del formulario */
+.formulario-container {
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #f4f6f8;
+    padding: 40px;
+    color: #2c3e50;
+    height: 100vh;
+}
+
+/* Estilo del formulario */
+.formulario-form {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 25px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+/* Contenedor de cada campo */
+.formulario-campo {
+    margin-bottom: 20px;
+}
+
+/* Etiquetas */
+.formulario-label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: bold;
+}
+
+/* Inputs y textareas */
+.formulario-input,
+.formulario-textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #bdc3c7;
+    border-radius: 6px;
+    font-size: 16px;
+    resize: vertical;
+}
+
+.formulario-textarea {
+    min-height: 120px;
+}
+
+/* Botón de envío */
+.formulario-boton {
+    background-color: #3498db;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.formulario-boton:hover {
+    background-color: #2980b9;
+}
+.btn-volver-container {
+    margin: 20px 0;
+    text-align: left;
+}
+
+.btn-volver {
+    display: inline-block;
+    padding: 10px 16px;
+    background-color: #95a5a6;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 6px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.btn-volver:hover {
+    background-color: #7f8c8d;
+}

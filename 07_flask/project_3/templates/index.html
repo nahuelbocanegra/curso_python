@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}">
     <title>Mensajeria</title>
 </head>
 <body>
@@ -12,6 +13,10 @@
             <h2>{{mensaje.titulo}}</h2>
             <p>{{mensaje.mensaje}}</p>
         {% endfor %}
+    </div>
+
+    <div class="btn-agregar-container">
+        <a class="btn-agregar" href="{{url_for('insertar_mensaje')}}">+</a>
     </div>
 </body>
 </html>
