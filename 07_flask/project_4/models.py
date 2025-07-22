@@ -1,8 +1,9 @@
 
 from sqlalchemy.orm import Mapped,mapped_column
 from sqlalchemy import String
+from db import db
 
-class Contacto():
+class Contacto(db.Model):
     id:Mapped[int]=mapped_column(primary_key=True)
     nombre:Mapped[str]=mapped_column(String(100))
     telefono:Mapped[str]=mapped_column(String(100))
