@@ -36,6 +36,11 @@ def insertar_comentario():
     
     return render_template("editar_contacto.html",formulario=formulario_contacto)
 
+@app.rouute("/contacto/<int:id>")
+def detalle_contacto(id):
+    contacto=Contacto.query.get(id)
+    return render_template("detalles_contacto.html",contacto=contacto)
+
 
 
 
