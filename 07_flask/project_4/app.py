@@ -21,7 +21,7 @@ def inicio():
     contactos=Contacto.query.all()
     return render_template("index.html",contactos=contactos)
 
-@app.route("/nuevo_contario",methods=["GET","POST"])
+@app.route("/nuevo_contacto",methods=["GET","POST"])
 def insertar_comentario():
 
     contacto=Contacto()
@@ -36,10 +36,10 @@ def insertar_comentario():
     
     return render_template("editar_contacto.html",formulario=formulario_contacto)
 
-@app.rouute("/contacto/<int:id>")
+@app.route("/contacto/<int:id>")
 def detalle_contacto(id):
     contacto=Contacto.query.get(id)
-    return render_template("detalles_contacto.html",contacto=contacto)
+    return render_template("detalles_contacto.html",dato=contacto)
 
 
 
