@@ -1,8 +1,9 @@
-from flask import Flask,render_template
+from flask import Flask,render_template,url_for,request
 from db import db
 from variables_entorno import NAME_BASE,NAME_USER,SERVER_NAME,SECRET_KEY,USER_PASSSWORD
 from flask_migrate import Migrate
 from models import Contacto
+from forms import NuevoContacto
 app=Flask(__name__)
 
 FULL_URL_DB=f"mysql+pymysql://{NAME_USER}:{USER_PASSSWORD}@{SERVER_NAME}/{NAME_BASE}"
@@ -19,6 +20,24 @@ migrate=Migrate(app,db)
 def inicio():
     contactos=Contacto.query.all()
     return render_template("index.html",contactos=contactos)
+
+@app.route("/nuevo_contario",methods=["GET","POST"])
+def insertar_comentario():
+
+    contacto=Contacto()
+    formulario_contacto=NuevoContacto(obj=contacto)
+
+    if request.methods == "POST":
+        if formulario_contacto.validate_on_submit():
+            formulario_contacto.populate_obj(contacto)
+            db.session.add(contacto)
+            db.session.commit()
+            return render_template(url_for("inicio"))
+    
+    return render_template("editar_contacto.html",formulario=formulario_contacto)
+
+
+
 
 if __name__ == "__main__":
     app.run(debug=True)

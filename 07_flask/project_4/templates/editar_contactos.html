@@ -6,6 +6,32 @@
     <title>Editar contactos</title>
 </head>
 <body>
-    
+    <form action="" method="post">
+        <div>
+            {{formulario.nombre.label()}}
+            {{formulario.nombre(size=50)}}
+        </div>
+        <div>
+            {{formulario.telefono.label()}}
+            {{formulario.telefono(size=50)}}
+        </div>
+        <div>
+            {{formulario.email.label()}}
+            {{formulario.email(size=50)}}
+        </div>
+        <div>
+            {{formulario.direccion.label()}}
+            {{formulario.direccion(size=50)}}
+        </div>
+        <div>
+            {{formulario.comentario.label()}}
+            {{formulario.comentario(size=50)}}
+        </div>
+        <div>
+            {{formulario.enviar}}
+        </div>
+
+    </form>
+
 </body>
 </html>
