@@ -1,4 +1,4 @@
-from flask import Flask,render_template,url_for,request
+from flask import Flask,render_template,url_for,request,redirect
 from db import db
 from variables_entorno import NAME_BASE,NAME_USER,SERVER_NAME,SECRET_KEY,USER_PASSSWORD
 from flask_migrate import Migrate
@@ -34,7 +34,7 @@ def insertar_contacto():
             formulario_contacto.populate_obj(contacto)
             db.session.add(contacto)
             db.session.commit()
-            return render_template(url_for("inicio"))
+            return redirect(url_for("inicio"))
     
     return render_template("insertar_contactos.html",formulario=formulario_contacto)
 
@@ -43,6 +43,10 @@ def detalle_contacto(id):
     contacto=Contacto.query.get(id)
     return render_template("detalles_contacto.html",dato=contacto)
 
+@app.route("/editar_contacto/<int:id>")
+def editar_curso(id):
+    contacto=Contacto.query.get(id)
+    return render_template("insertar_contactos.html",dato=contacto)
 
 
 
