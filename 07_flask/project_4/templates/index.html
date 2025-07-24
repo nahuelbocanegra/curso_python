@@ -10,11 +10,17 @@
     <h1>Agenda de contactos</h1>
     <ul>
         {%for contacto in contactos:%}
+
             <li>
-                <h3>{{contacto.nombre}}</h3>
-                <p>{{contacto.telefono}}</p>
+                <a href="/contacto/{{contacto.id}}">
+                    <h3>{{contacto.nombre}}</h3>
+                    <p>{{contacto.telefono}}</p>
+                </a>
             </li>   
         {% endfor %}
     </ul>
+
+    <a href="{{url_for('insertar_contacto')}}">Agregar contacto</a>
+ 
 </body>
 </html>

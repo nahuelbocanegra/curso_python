@@ -11,6 +11,8 @@ FULL_URL_DB=f"mysql+pymysql://{NAME_USER}:{USER_PASSSWORD}@{SERVER_NAME}/{NAME_B
 
 app.config["SQLALCHEMY_DATABASE_URI"]=FULL_URL_DB
 
+app.config["SECRET_KEY"]=SECRET_KEY
+
 
 db.init_app(app)
 migrate=Migrate(app,db)
@@ -22,19 +24,19 @@ def inicio():
     return render_template("index.html",contactos=contactos)
 
 @app.route("/nuevo_contacto",methods=["GET","POST"])
-def insertar_comentario():
+def insertar_contacto():
 
     contacto=Contacto()
     formulario_contacto=NuevoContacto(obj=contacto)
 
-    if request.methods == "POST":
+    if request.method == "POST":
         if formulario_contacto.validate_on_submit():
             formulario_contacto.populate_obj(contacto)
             db.session.add(contacto)
             db.session.commit()
             return render_template(url_for("inicio"))
     
-    return render_template("editar_contacto.html",formulario=formulario_contacto)
+    return render_template("insertar_contactos.html",formulario=formulario_contacto)
 
 @app.route("/contacto/<int:id>")
 def detalle_contacto(id):
