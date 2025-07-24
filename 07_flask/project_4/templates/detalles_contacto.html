@@ -3,18 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static' , filename='css/detalles_curso.css') }}" >
     <title>Detalle contacto</title>
 </head>
 <body>
     <h2>Detalle contacto</h2>
 
-    <ul>
-        <li> {{dato.nombre}} </li>
-        <li> {{dato.telefono}} </li>
-        <li> {{dato.email}} </li>
-        <li> {{dato.direccion}} </li>
-        <li> {{dato.comentario}} </li>
-    </ul>
+    <div class="card">
+        <p> {{dato.nombre}} </p>
+        <p> {{dato.telefono}} </p>
+        <p> {{dato.email}} </p>
+        <p> {{dato.direccion}} </p>
+        <p> {{dato.comentario}} </p>
+    </div>
     
 </body>
 </html>
