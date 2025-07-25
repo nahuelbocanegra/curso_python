@@ -43,10 +43,28 @@ def detalle_contacto(id):
     contacto=Contacto.query.get(id)
     return render_template("detalles_contacto.html",dato=contacto)
 
-@app.route("/editar_contacto/<int:id>")
+@app.route("/editar_contacto/<int:id>",methods=["GET","POST"])
 def editar_curso(id):
-    contacto=Contacto.query.get(id)
-    return render_template("insertar_contactos.html",dato=contacto)
+    contacto=Contacto.query.get_or_404(id) #Busca en la base de datos un contacto con el ID pasado por la URL.
+    contacto_form=NuevoContacto(obj=contacto)
+
+    if request.method == "POST": #Verifica si el usuario envió el formulario
+        if contacto_form.validate_on_submit(): #Valida que el formulario esté bien completado 
+            contacto_form.populate_obj(contacto) #Copia los datos del formulario hacia el objeto contacto 
+            db.session.commit() #Guarda los cambios en la base de datos.
+            return redirect(url_for("inicio"))
+        
+    return render_template("editar_contacto.html",formulario=contacto_form)  #Si la petición no fue POST (es decir, fue GET), 
+                                                                             #simplemente muestra el formulario con los datos ya cargados para editar.
+
+
+@app.route("/eliminar_contacto/<int:id>",methods=["POST"])
+def eliminar_contacto(id):
+    contacto=Contacto.query.get_or_404(id)
+    db.session.delete(contacto)
+    db.session.commit()
+    return redirect(url_for("inicio"))
+    
 
 
 

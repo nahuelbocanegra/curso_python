@@ -12,10 +12,14 @@
         {%for contacto in contactos:%}
 
             <li>
-                <a href="/contacto/{{contacto.id}}">
-                    <h3>{{contacto.nombre}}</h3>
-                    <p>{{contacto.telefono}}</p>
-                </a>
+                <a href="/contacto/{{contacto.id}}">{{contacto.nombre}}</a>
+                <p>{{contacto.telefono}}</p>
+                <a href="/editar_contacto/{{contacto.id}}">editar</a>
+                
+                <form action="{{url_for('eliminar_contacto',id=contacto.id)}}" method="post">
+               
+                    <button type="submit">eliminar</button>
+                </form>
             </li>   
         {% endfor %}
     </ul>
