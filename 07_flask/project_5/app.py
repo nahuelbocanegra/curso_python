@@ -1,4 +1,8 @@
 from flask import Flask,render_template
+from flask_migrate import Migrate
+from db import db
+from models import Frases
+from variables_entorno import NAME_USER,SERVER_NAME,USER_PASSWORD,DATA_BASE
 
 app=Flask(__name__)
 
