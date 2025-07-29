@@ -5,9 +5,9 @@ from db import db
 
 class Frases(db.Model):
 
-    id:Mapped[int]=mapped_column(primary_key=True)
+    id:Mapped[int]=mapped_column(primary_key=True,autoincrement=True)
     autor:Mapped[str]=mapped_column(String(100))
-    frase:Mapped[str]=mapped_column(String(500))
+    frase:Mapped[str]=mapped_column(String(500),unique=True)
     
 
     def __str__(self):
