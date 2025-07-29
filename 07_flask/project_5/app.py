@@ -3,6 +3,7 @@ from flask_migrate import Migrate
 from db import db
 from models import Frases
 from variables_entorno import NAME_USER,SERVER_NAME,USER_PASSWORD,DATA_BASE,SECRET_KEY
+import random
 
 app=Flask(__name__)
 
@@ -15,6 +16,10 @@ app.config["SECRET_KEY"]=SECRET_KEY
 db.init_app(app)
 migrate=Migrate(app,db)
 
+
+
 @app.route("/")
 def inicio():
-    return render_template("index.html")
+    frases=Frases.query.get_or_404(id)
+    frase=random.choice(frases)
+    return render_template("index.html",data=frase)
