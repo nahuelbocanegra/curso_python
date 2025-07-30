@@ -20,6 +20,6 @@ migrate=Migrate(app,db)
 
 @app.route("/")
 def inicio():
-    frases=Frases.query.get_or_404(id)
+    frases=Frases.query.all()
     frase=random.choice(frases)
-    return render_template("index.html",data=frase)
+    return render_template("index.html", data=frase)
