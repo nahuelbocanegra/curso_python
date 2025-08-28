@@ -28,10 +28,10 @@ class Participacion:
         cursor.close()
 
 
-    def eliminar_participante(self,id):
-        sql=f"DELETE FROM usuario WHERE id_usuario = %s"
+    def eliminar_participante(self,nombre):
+        sql=f"DELETE FROM usuario WHERE nombre = %s"
         cursor=self.con.cursor()
-        cursor.execute(sql,(id,))
+        cursor.execute(sql,(nombre,))
         self.con.commit()
         cursor.close()
 
@@ -56,4 +56,29 @@ class Sorteo:
 
 
 def inicio():
-    print("añadir y borrar participantes, mostrarlos, lanzar el sorteo o salir")
+
+    usuario=Participacion(con)
+    sorteo=Sorteo()
+
+    while True:
+
+        print("1- Mostrar participante")
+        print("2- Añadir participante")
+        print("3- Eliminar participante ")
+        print("4- Sortear participante")
+        print("5- Salir")
+        
+        opcion = int(input("elegir una opcion: "))
+
+        if opcion == 1:
+            usuario.mostrar_participante()
+        if opcion == 2:
+            nombre=input("ingrese el nombre del participante que quiere agregar: ")
+            usuario.añadir_participante(nombre)
+        if opcion == 3:
+            nombre=input("ingrese el nombre del participante que quiere eliminar: ")
+            usuario.eliminar_participante(nombre)
+        if opcion == 4:
+            sorteo.lanzar_sorteo()
+        if opcion == 5:
+            break
