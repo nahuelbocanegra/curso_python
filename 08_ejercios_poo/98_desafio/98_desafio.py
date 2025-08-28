@@ -17,22 +17,41 @@ from database import con
 
 class Participacion:
 
-    def añadir_participante():
-        pass
-    def eliminar_participante():
-        pass
+    def __init__(self,conexion):
+        self.con=conexion
 
-    def mostrar_participante():
-        cursor=con.cursor()
-        cursor.execute("select * from usuario")
+    def añadir_participante(self,valor):
+        sql="INSERT INTO usuario (nombre) VALUES (%s)"
+        cursor=self.con.cursor()
+        cursor.execute(sql,(valor,))
+        self.con.commit()
+        cursor.close()
+
+
+    def eliminar_participante(self,id):
+        sql=f"DELETE FROM usuario WHERE id_usuario = %s"
+        cursor=self.con.cursor()
+        cursor.execute(sql,(id,))
+        self.con.commit()
+        cursor.close()
+
+    def mostrar_participante(self):
+        sql="SELECT * FROM usuario"
+        cursor=self.con.cursor()
+        cursor.execute(sql)
         for usuario in cursor.fetchall():
             print(usuario[1])
         cursor.close()
         
 
+
+
+class Sorteo:
+    
+    usuarios=Participacion(con)
+    
     def lanzar_sorteo():
         pass
-
 
 
 
