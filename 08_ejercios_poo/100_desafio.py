@@ -45,10 +45,6 @@ def logica(palabra):
         if letra in abecedario:
             print(f"{letra} = {abecedario[letra]} ")
             contador+=abecedario[letra]
-        else:
-            continue
-
-    print(f"total = {contador}")
 
     return contador
 
@@ -59,13 +55,15 @@ def main():
 
         palabra=input("ingrese una palabra: ").lower()
         
-        contrador=logica(palabra)
+        contador=logica(palabra)
 
-        if contrador == 100:
+        if contador == 100:
 
             print("palabra de 100 puntos!!! ")
             
             break
+        else:
+            print(f"puntos de la palabra: {contador}")
 
-    
-main()
+if __name__ == "__main__":
+    main()
