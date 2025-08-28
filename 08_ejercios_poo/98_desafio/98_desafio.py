@@ -10,6 +10,8 @@
 #   - Si seleccionas realizar el sorteo, elegirás una persona al azar
 #     y se eliminará del listado.
 #   - Si seleccionas salir, el programa finalizará.
+
+from database import con
  
 
 
@@ -19,8 +21,15 @@ class Participacion:
         pass
     def eliminar_participante():
         pass
+
     def mostrar_participante():
-        pass
+        cursor=con.cursor()
+        cursor.execute("select * from usuario")
+        for usuario in cursor.fetchall():
+            print(usuario[1])
+        cursor.close()
+        
+
     def lanzar_sorteo():
         pass
 
