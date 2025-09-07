@@ -15,12 +15,15 @@ from database import con
  
 
 
-class Participacion:
+class Usuario:
 
     def __init__(self,conexion):
         self.con=conexion
 
     def añadir_participante(self,valor):
+
+
+
         sql="INSERT INTO usuario (nombre) VALUES (%s)"
         cursor=self.con.cursor()
         cursor.execute(sql,(valor,))
@@ -48,16 +51,21 @@ class Participacion:
 
 class Sorteo:
     
-    usuarios=Participacion(con)
+
+
+    usuarios=Usuario(con)
     
-    def lanzar_sorteo():
-        pass
+    def lanzar_sorteo(self):
+
+        
+        
+        print("sorteooo")
 
 
 
 def inicio():
 
-    usuario=Participacion(con)
+    usuario=Usuario(con)
     sorteo=Sorteo()
 
     while True:
@@ -73,12 +81,33 @@ def inicio():
         if opcion == 1:
             usuario.mostrar_participante()
         if opcion == 2:
-            nombre=input("ingrese el nombre del participante que quiere agregar: ")
-            usuario.añadir_participante(nombre)
+            try:
+                nombre=input("ingrese el nombre del participante que quiere agregar: ")
+                if nombre.strip():
+                    usuario.añadir_participante(nombre)
+                else:
+                    print("Nombre inválido")
+            except: 
+                print("el nombre ya esta en la lista")
+       
         if opcion == 3:
-            nombre=input("ingrese el nombre del participante que quiere eliminar: ")
-            usuario.eliminar_participante(nombre)
+
+            try:
+                nombre=input("ingrese el nombre del participante que quiere eliminar: ")
+                if nombre.strip():
+                    usuario.eliminar_participante(nombre)
+                else:
+                    print("Nombre inválido")
+            except:
+                print("el nombre no se encuentra en la lista")
+
         if opcion == 4:
+
             sorteo.lanzar_sorteo()
+
         if opcion == 5:
             break
+
+
+if __name__== "__main__":
+    inicio()
