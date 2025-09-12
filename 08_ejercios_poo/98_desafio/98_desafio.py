@@ -12,6 +12,7 @@
 #   - Si seleccionas salir, el programa finalizará.
 
 from database import con
+import random
  
 
 
@@ -53,13 +54,22 @@ class Sorteo:
     
 
 
-    usuarios=Usuario(con)
+    usuarios=Usuario()
     
     def lanzar_sorteo(self):
 
-        
-        
-        print("sorteooo")
+      
+        sql="SELECT * FROM usuario"
+        cursor=con.cursor()
+        cursor.execute(sql)
+        lista=cursor.fetchall()
+        if lista:
+            ganador=random.choice(lista)
+            print(f"el ganador es: {ganador[1]}")
+            self.usuarios.eliminar_participante(ganador[1])
+        else:
+            print("no hay participantes")
+        cursor.close()  
 
 
 
