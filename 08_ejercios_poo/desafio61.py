@@ -17,7 +17,7 @@ gen=numeros_aleatorios()
 
 for _ in range(10):
     print(next(gen))
-    time.sleep(0.01)
+    time.sleep(0.1)
 
 
 
