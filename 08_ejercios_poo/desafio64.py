@@ -17,7 +17,7 @@ def encontrar_parametros(url):
 
             parametros.append(valor)
 
-    print(parametros)
+    return parametros
 
 
   
